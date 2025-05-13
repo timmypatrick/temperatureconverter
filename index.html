@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home | Converter</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body onmousedown="mouse_effect()">
+    <div id="nav_tog">
+      <div id="reveal" onclick="open_nav()">
+        <i class="fa fa-navicon" style="font-size: 33px"></i>
+      </div>
+      <div>
+        <input type="checkbox" id="check" />
+        <label for="check">
+          <span></span>
+        </label>
+      </div>
+    </div>
+    <h2>Temperature Converter</h2>
+    <section>
+      <span onclick="conv_type()">
+        <span> Enter Conversion Type </span>
+        <i class="fa fa-sort-down" id="down" style="font-size: 30px"></i>
+      </span>
+      <div class="types">
+        <div id="first" onclick="cel_to_kel()">Degree Celsius To Kelvin</div>
+        <div id="first" onclick="kel_to_cel()">Kelvin To Degree Celsius</div>
+        <div id="first" onclick="cel_to_far()">Degree Celsius To Faraheit</div>
+        <div id="first" onclick="far_to_cel()">Faraheit To Degree Celsius</div>
+        <div id="first" onclick="kel_to_far()">Kelvin To Faraheit</div>
+        <div id="first" onclick="far_to_kel()">Faraheit To Kelvin</div>
+      </div>
+    </section>
+
+    <aside>
+      <input type="number" />
+      <button id="convert" onclick="default_convert()">
+        <i class="fa fa-refresh" style="font-size: 20px"></i>
+        Convert
+      </button>
+    </aside>
+    <div id="answer_box"></div>
+
+    <article>
+      <div onclick="close_nav()">&times;</div>
+      <header>
+        <img src="Timmy Patrick.jpg" class="Timmy-Patrick" />
+        <div>Ultimate Temperature Converter</div>
+      </header>
+      <p>
+        Ensure you input the required temperature with it's respective unit and
+        proceed to convert to any other unit of your choice
+      </p>
+    </article>
+
+    <script>
+      var get_answer_box = document.getElementById("answer_box");
+      var caption_text = document.querySelector("section span span");
+      var get_converter = document.getElementById("convert");
+      var inp_val = document.querySelector("input[type='number']");
+      var types = document.querySelector(".types");
+      var labal = "Answer = ";
+      var C_unit = "C";
+      var K_unit = "K";
+      var F_unit = "F";
+
+      function conv_type() {
+        types.style.height = "160px";
+        types.style.transition = ".5s";
+      }
+
+      function default_convert() {
+        if (inp_val.value.length == 0) {
+          get_answer_box.textContent = "Please Input A Value";
+        } else {
+          get_answer_box.textContent = "Good, Now Choose A Conversion Type";
+        }
+      }
+
+      function cel_to_kel() {
+        caption_text.innerText = "Degree Celsius To Kelvin";
+        types.style.height = "0px";
+
+        get_converter.addEventListener("click", function (e) {
+          const answer = Number(inp_val.value) + 273;
+          get_answer_box.textContent = labal + answer + K_unit;
+
+          if (inp_val.value.length == 0) {
+            get_answer_box.textContent = "Enter A Temperature In Celcius";
+          }
+        });
+      }
+
+      function kel_to_cel() {
+        caption_text.innerText = "Kelvin To Degree Celcius";
+        types.style.height = "0px";
+
+        get_converter.addEventListener("click", function (e) {
+          const answer = Number(inp_val.value) - 273;
+          get_answer_box.textContent = labal + answer + C_unit;
+
+          if (inp_val.value.length == 0) {
+            get_answer_box.textContent = "Enter A Temperature In Kelvin";
+          }
+        });
+      }
+
+      function cel_to_far() {
+        caption_text.innerText = "Degree Celsius To Fareheit";
+        types.style.height = "0px";
+
+        get_converter.addEventListener("click", function (e) {
+          const user_value = Number(inp_val.value);
+          var answer = 32 + 1.8 * user_value;
+          get_answer_box.textContent = labal + answer + F_unit;
+
+          if (inp_val.value.length == 0) {
+            get_answer_box.textContent = "Enter A Temperature In Celcius";
+          }
+        });
+      }
+
+      function far_to_cel() {
+        caption_text.innerText = "Fareheit To Degree Celsius";
+        types.style.height = "0px";
+
+        get_converter.addEventListener("click", function (e) {
+          const user_value = Number(inp_val.value);
+          var answer = (user_value - 32) / 1.8;
+          get_answer_box.textContent = labal + answer + C_unit;
+
+          if (inp_val.value.length == 0) {
+            get_answer_box.textContent = "Enter A Temperature In Fareheit";
+          }
+        });
+      }
+
+      function kel_to_far() {
+        caption_text.innerText = "Kelvin To Fareheit";
+        types.style.height = "0px";
+
+        get_converter.addEventListener("click", function (e) {
+          const user_value = Number(inp_val.value);
+          var answer = 1.8 * user_value - 459.4;
+          get_answer_box.textContent = labal + answer + F_unit;
+
+          if (inp_val.value.length == 0) {
+            get_answer_box.textContent = "Enter A Temperature In Kelvin";
+          }
+        });
+      }
+
+      function far_to_kel() {
+        caption_text.innerText = "Fareheit To Kelvin";
+        types.style.height = "0px";
+
+        get_converter.addEventListener("click", function (e) {
+          const user_value = Number(inp_val.value);
+          var answer = user_value / 1.8 + 459.4 / 1.8;
+          get_answer_box.textContent = labal + answer + K_unit;
+
+          if (inp_val.value.length == 0) {
+            get_answer_box.textContent = "Enter A Temperature In Fareheit";
+          }
+        });
+      }
+
+      function mouse_effect() {
+        types.style.height = "0px";
+        types.style.transition = ".5s";
+      }
+
+      function open_nav() {
+        var target_nav = document.querySelector("article");
+        // target_nav.style.width = "90%";
+        target_nav.style.left = "0%";
+      }
+
+      function close_nav() {
+        var target_nav = document.querySelector("article");
+        target_nav.style.left = "-100%";
+      }
+
+      function toggle_all() {
+        let on_check = document.getElementById("check");
+        on_check.addEventListener("change", () => {
+          document.body.classList.toggle("turn");
+        });
+      }
+      toggle_all();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,253 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body{
+	background-color: orange;
+	font-family: sans-serif, 'Lucida Sans';
+	word-wrap: break-word;
+	transition: background .2s;
+}
+
+#nav_tog{
+	display: flex;
+	justify-content: space-between;
+	margin: 25px 30px 0;
+}
+
+body.turn{
+	background-color: darkslategray;
+}
+
+img.Timmy-Patrick{
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	transform: rotate(-20deg)
+}
+
+img#icon{
+	width: 35px;
+	cursor: pointer;
+}
+
+label{
+	width: 37px;
+	height: 15px;
+	background-color: lightgray;
+	display: inline-block;
+	border-radius: 20px;
+	position: relative;
+	transition: .2s;
+	top: 7px;
+	cursor: pointer;
+}
+
+label > span{
+	display: inline-block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	background-color: snow;
+	border-radius: 50%;
+	top: -3px;
+	transition: .2s;
+}
+
+input[type='checkbox']{
+	display: none;
+}
+
+input[type='checkbox']:checked + label{
+	background-color: gold;
+}
+
+input[type='checkbox']:checked ~ label > span{
+	background-color: orange;
+	transform: translateX(17px);
+}
+
+article{
+	background-color: blueviolet;
+	height: 100vh;
+	width: 90%;
+	max-width: 250px;
+	position: absolute;
+	top: 0px;
+	left: -100%;
+	overflow: hidden;
+	transition: 1s;
+}
+
+article > header{
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 50px 20px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+article > header > div{
+	color: sandybrown;
+	font-size: 18px;
+	 margin-left: 20px;
+	font-weight: bold;
+}
+
+article > div{
+	position: absolute;
+	right: 20px;
+	font-size: 50px;
+	color: sandybrown;
+	cursor: pointer;
+}
+
+article p{
+	color: snow;
+	font-weight: bold;
+	font-size: 18px;
+	margin: 20px 10px 0;
+}
+
+#reveal{
+	color: snow;
+	cursor: pointer;
+	transition: .3s;
+}
+
+body.turn #reveal{
+	color: wheat;
+}
+
+h2{
+	margin: 20px auto 40px;
+	text-align: center;
+	color: blueviolet;
+	transition: .1s;
+}
+
+section{
+	background-color: blueviolet;
+	width: 90%;
+	margin: 0 auto;
+	max-width: 500px;
+	border: 2px solid #fff;
+}
+
+section > span{
+	width: 100%;
+	font-size: 19px;
+	font-weight: bold;
+	color: gold;
+	background-color: blueviolet;
+	padding: 5px 0 5px 7px;
+	display: inline-block;
+	cursor: pointer;
+}
+
+section > span span{
+	font-size: 18px;
+}
+
+.types{
+	font-size: 17px;
+	font-weight: bold;
+	color: #fff;
+	padding-left: 15px;
+	height: 0px;
+	overflow: auto;
+}
+
+.types div{
+	cursor: pointer;
+}
+
+.types > div:not(:last-child){
+	margin-bottom: 6px;
+}
+
+aside{
+	width: 80%;
+	margin: 2em auto;
+	max-width: 500px;
+	display: flex;
+	justify-content: space-between;
+}
+
+aside > input{
+	width: 40%;
+	font-size: 1.3em;
+	padding: 5px;
+	text-align: center;
+}
+
+aside > button{
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #fff;
+	background-color: blueviolet;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	padding: 12px 14px;
+	cursor: pointer;
+}
+
+#answer_box{
+	text-align: center;
+	color: blueviolet;
+	font-weight: bold;
+	font-size: 17px;
+}
+
+span i#down{
+	float: right;
+	margin: -10px 10px 0px 0;
+}
+
+body.turn #answer_box{
+	color: wheat;
+	font-family: monospace;
+	font-size: 30px;
+}
+
+body.turn h2{
+	color: wheat;
+	font-family: monospace;
+	font-size: 30px;
+}
+
+@media only screen and (min-width: 600px){
+	#answer_box{
+		font-size: 24px;
+	}
+	
+	h2{
+		margin-top: 50px;
+	}
+}
+
+button i{
+	animation: spin 2s linear infinite;
+	-webkit-animation: spin 2s linear infinite;
+}
+
+@keyframes spin{
+	from{
+		transform: rotate(0deg);
+	}
+	to{
+		transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes spin{
+	from{
+		-webkit-transform: rotate(0deg);
+	}
+	to{
+		-webkit-transform: rotate(360deg);
+	}
+}
